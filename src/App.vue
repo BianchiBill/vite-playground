@@ -1,31 +1,44 @@
+<!-- eslint-disable prettier/prettier -->
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+
+
+const show = true
+const array = [1,2,3,4,5,6,7,8,9,10]
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="col-6">
+    <h2>Composition</h2>
+    <!--INICIO V-IF, V-ELSE-IF, V-ELSE -->
+    <span v-if="show">V-IF</span>
+    <span
+      v-else-if="show
+        == null"
+    >V-ELSE-IF</span>
+    <span v-else>V-Else</span>
+    <!--FIM V-IF, V-ELSE-IF, V-ELSE -->
+    <br>
+    <!--INICIO V-SHOW -->
+    <span v-show="show">Falando sobre o V-Show</span>
+    <!--INICIO V-SHOW -->
+    <br>
+    <!--INICIO V-FOR -->
+    <ul>
+      <li
+        v-for="item, index in array"
+        :key="index"
+      >
+        {{ item }}
+      </li>
+    </ul>
+    <!--FIM V-FOR -->
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style>
 </style>
+
+<!-- Diferenças do v-if para o v-show
+O v-if, se a condição não for satisfeita, não renderiza, o que torne mais seguro
+O v-show, com a condição satisfatoria ou não, apresenta no HTML, mas não renderiza o resultado, mais parecido com o CSS display: none-->
